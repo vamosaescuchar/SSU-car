@@ -1,0 +1,2165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="BMW 세단 중심의 비공식 딜러 웹사이트 포트폴리오 콘셉트"
+  />
+  <title>BMW PRIME SEOUL | Sedan Dealer Concept</title>
+
+  <style>
+    /* =========================================================
+       1. COLOR SYSTEM
+       BMW를 연상시키는 블루와 고급스러운 블랙/실버를 조합했습니다.
+       ========================================================= */
+    :root {
+      --bmw-blue: #0066b1;
+      --bmw-sky: #00a8e8;
+      --bmw-deep-blue: #003d78;
+
+      --carbon: #05070a;
+      --obsidian: #090d12;
+      --graphite: #111820;
+      --graphite-2: #18212b;
+
+      --silver: #bcc5cf;
+      --silver-2: #e1e6eb;
+      --white: #f7f9fb;
+
+      --m-light-blue: #55a7d9;
+      --m-blue: #164b8e;
+      --m-red: #d31f35;
+
+      --text-main: #f5f7fa;
+      --text-muted: #9ba7b3;
+      --line: rgba(255, 255, 255, 0.12);
+
+      --shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
+      --max-width: 1240px;
+      --radius-lg: 30px;
+      --radius-md: 20px;
+      --radius-sm: 12px;
+    }
+
+    /* =========================================================
+       2. BASIC RESET
+       ========================================================= */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      min-width: 320px;
+      overflow-x: hidden;
+      background: var(--carbon);
+      color: var(--text-main);
+      font-family:
+        "Pretendard",
+        "Apple SD Gothic Neo",
+        "Noto Sans KR",
+        Arial,
+        Helvetica,
+        sans-serif;
+      line-height: 1.6;
+    }
+
+    body::selection {
+      background: var(--bmw-blue);
+      color: #fff;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    select,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #c7d3df;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 26px;
+      height: 2px;
+      content: "";
+      background: linear-gradient(90deg, var(--bmw-sky), var(--bmw-blue));
+    }
+
+    .section {
+      padding: 110px 0;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: 1fr 0.8fr;
+      gap: 60px;
+      align-items: end;
+      margin-bottom: 48px;
+    }
+
+    .section-title {
+      margin-top: 14px;
+      color: var(--white);
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
+      line-height: 1.03;
+      letter-spacing: -0.045em;
+    }
+
+    .section-description {
+      max-width: 610px;
+      color: var(--text-muted);
+      font-size: 0.96rem;
+    }
+
+    /* =========================================================
+       3. NAVIGATION
+       ========================================================= */
+    .site-header {
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      border-bottom: 1px solid transparent;
+      transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        backdrop-filter 0.25s ease;
+    }
+
+    .site-header.scrolled {
+      border-color: var(--line);
+      background: rgba(5, 7, 10, 0.8);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      display: flex;
+      min-height: 82px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-mark {
+      position: relative;
+      display: grid;
+      width: 42px;
+      height: 42px;
+      overflow: hidden;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.56);
+      border-radius: 50%;
+      background: #070a0e;
+      font-size: 0.63rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      position: absolute;
+      z-index: -1;
+      width: 21px;
+      height: 21px;
+      content: "";
+      background: var(--bmw-blue);
+    }
+
+    .brand-mark::before {
+      right: 0;
+      bottom: 0;
+    }
+
+    .brand-mark::after {
+      top: 0;
+      left: 0;
+      opacity: 0.42;
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-size: 0.82rem;
+      letter-spacing: 0.13em;
+    }
+
+    .brand-copy span {
+      display: block;
+      margin-top: 2px;
+      color: #7e8995;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      list-style: none;
+      color: #c0c8d1;
+      font-size: 0.84rem;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 10px 0;
+    }
+
+    .nav-links a::after {
+      position: absolute;
+      bottom: 4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      content: "";
+      background: var(--bmw-sky);
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      min-height: 42px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    /* =========================================================
+       4. HERO
+       - 마우스에 반응하는 spotlight
+       - JS로 모델명/문구/스펙이 자동 교체됩니다.
+       ========================================================= */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 74% 28%, rgba(0, 102, 177, 0.18), transparent 27%),
+        linear-gradient(135deg, #05070a 0%, #0a0e14 50%, #05070a 100%);
+      isolation: isolate;
+    }
+
+    .hero::before {
+      position: absolute;
+      z-index: -3;
+      inset: 0;
+      content: "";
+      opacity: 0.16;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: linear-gradient(to bottom, #000 0%, transparent 82%);
+    }
+
+    .hero-spotlight {
+      position: absolute;
+      z-index: -2;
+      top: 0;
+      left: 0;
+      width: 620px;
+      height: 620px;
+      border-radius: 50%;
+      opacity: 0.78;
+      background:
+        radial-gradient(circle, rgba(0, 168, 232, 0.2) 0%, rgba(0, 102, 177, 0.08) 34%, transparent 69%);
+      filter: blur(16px);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.3s ease;
+    }
+
+    .hero-layout {
+      display: grid;
+      min-height: 100svh;
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+      gap: 30px;
+      padding-top: 110px;
+      padding-bottom: 54px;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 4;
+      padding: 50px 0;
+    }
+
+    .hero-kicker {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      color: #aab6c2;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .m-stripes {
+      display: inline-flex;
+      width: 34px;
+      height: 4px;
+      overflow: hidden;
+      transform: skewX(-22deg);
+    }
+
+    .m-stripes span {
+      flex: 1;
+    }
+
+    .m-stripes span:nth-child(1) {
+      background: var(--m-light-blue);
+    }
+
+    .m-stripes span:nth-child(2) {
+      background: var(--m-blue);
+    }
+
+    .m-stripes span:nth-child(3) {
+      background: var(--m-red);
+    }
+
+    .hero-model-index {
+      margin-bottom: 8px;
+      color: var(--bmw-sky);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 720px;
+      color: #fff;
+      font-size: clamp(4rem, 9vw, 8.5rem);
+      font-weight: 700;
+      line-height: 0.86;
+      letter-spacing: -0.065em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 .outline {
+      display: block;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.45);
+    }
+
+    .hero-tagline {
+      max-width: 520px;
+      min-height: 64px;
+      margin-top: 28px;
+      color: #bac4ce;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 50px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 22px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 800;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: linear-gradient(90deg, var(--bmw-blue), #1487d1);
+      box-shadow: 0 14px 34px rgba(0, 102, 177, 0.28);
+      color: #fff;
+    }
+
+    .button-secondary {
+      border-color: rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.045);
+      color: #fff;
+    }
+
+    .hero-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 38px;
+    }
+
+    .spec-chip {
+      min-width: 118px;
+      padding: 13px 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(10px);
+    }
+
+    .spec-chip strong {
+      display: block;
+      color: #fff;
+      font-size: 0.96rem;
+    }
+
+    .spec-chip span {
+      display: block;
+      margin-top: 3px;
+      color: #7f8b96;
+      font-size: 0.66rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 660px;
+      perspective: 1200px;
+    }
+
+    .hero-car-stage {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: min(760px, 104%);
+      transform: translate(-48%, -47%);
+      transform-style: preserve-3d;
+      transition: transform 0.15s ease-out;
+    }
+
+    .car-aura {
+      position: absolute;
+      z-index: -2;
+      right: 4%;
+      bottom: 8%;
+      width: 74%;
+      height: 25%;
+      border-radius: 50%;
+      opacity: 0.68;
+      background: rgba(0, 102, 177, 0.28);
+      filter: blur(60px);
+    }
+
+    .car-platform {
+      position: absolute;
+      z-index: -1;
+      right: 3%;
+      bottom: 10%;
+      width: 78%;
+      height: 16%;
+      border-radius: 50%;
+      background:
+        radial-gradient(ellipse, rgba(255, 255, 255, 0.12), rgba(0, 0, 0, 0.08) 46%, transparent 72%);
+      filter: blur(3px);
+      transform: rotate(-1deg);
+    }
+
+    .sedan-svg {
+      overflow: visible;
+      filter: drop-shadow(0 45px 35px rgba(0, 0, 0, 0.55));
+    }
+
+    .car-body-main {
+      fill: url(#carPaint);
+      stroke: rgba(255, 255, 255, 0.22);
+      stroke-width: 1.1;
+    }
+
+    .car-window {
+      fill: url(#glass);
+      stroke: rgba(141, 205, 246, 0.27);
+      stroke-width: 0.8;
+    }
+
+    .car-line {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.25);
+      stroke-width: 1.1;
+    }
+
+    .car-light {
+      fill: #dff5ff;
+      filter: drop-shadow(0 0 8px #5fc8ff);
+    }
+
+    .wheel-ring {
+      fill: #06080b;
+      stroke: #8a949f;
+      stroke-width: 2;
+    }
+
+    .wheel-inner {
+      fill: #1a222a;
+      stroke: #c4ccd4;
+      stroke-width: 1;
+    }
+
+    .wheel-spoke {
+      stroke: #8e98a3;
+      stroke-width: 2;
+    }
+
+    .hero-series-watermark {
+      position: absolute;
+      z-index: -1;
+      top: 7%;
+      right: -4%;
+      color: rgba(255, 255, 255, 0.025);
+      font-size: clamp(12rem, 24vw, 23rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.08em;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-side-info {
+      position: absolute;
+      right: 0;
+      bottom: 6%;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: #7d8994;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transform: rotate(-90deg) translateX(100%);
+      transform-origin: bottom right;
+    }
+
+    .hero-side-info::before {
+      width: 55px;
+      height: 1px;
+      content: "";
+      background: #52606d;
+    }
+
+    .hero-dots {
+      position: absolute;
+      z-index: 8;
+      right: 4%;
+      bottom: 7%;
+      display: flex;
+      gap: 8px;
+    }
+
+    .hero-dot {
+      width: 34px;
+      height: 4px;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.18);
+      transition:
+        width 0.25s ease,
+        background 0.25s ease;
+    }
+
+    .hero-dot.active {
+      width: 58px;
+      background: var(--bmw-sky);
+    }
+
+    /* =========================================================
+       5. MODELS
+       ========================================================= */
+    .models-section {
+      background:
+        linear-gradient(180deg, #080b0f 0%, #0a0f15 100%);
+    }
+
+    .model-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 30px;
+    }
+
+    .filter-button {
+      padding: 9px 15px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      background: transparent;
+      color: #8f9ba7;
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    .filter-button.active {
+      border-color: rgba(0, 168, 232, 0.45);
+      background: rgba(0, 102, 177, 0.14);
+      color: #dcefff;
+    }
+
+    .model-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .model-card {
+      position: relative;
+      min-height: 450px;
+      overflow: hidden;
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      background:
+        radial-gradient(circle at 65% 30%, rgba(0, 102, 177, 0.14), transparent 36%),
+        #0d131a;
+      transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .model-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0, 168, 232, 0.36);
+    }
+
+    .model-card:nth-child(1),
+    .model-card:nth-child(2) {
+      grid-column: span 6;
+    }
+
+    .model-card:nth-child(n + 3) {
+      grid-column: span 4;
+    }
+
+    .model-card.hidden {
+      display: none;
+    }
+
+    .model-card-top {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .model-category {
+      color: var(--bmw-sky);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .model-card h3 {
+      margin-top: 7px;
+      color: #fff;
+      font-size: 1.85rem;
+      letter-spacing: -0.04em;
+    }
+
+    .model-badge {
+      height: max-content;
+      padding: 6px 9px;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 999px;
+      color: #8e9ba7;
+      font-size: 0.65rem;
+    }
+
+    .model-art {
+      position: relative;
+      height: 220px;
+      margin: 24px -4px 18px;
+    }
+
+    .mini-car {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 104%;
+      height: 110px;
+      transform: translate(-50%, -50%);
+    }
+
+    .mini-car::before {
+      position: absolute;
+      top: 31px;
+      left: 15%;
+      width: 70%;
+      height: 54px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 49% 56% 18% 17% / 70% 78% 25% 24%;
+      content: "";
+      background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.14), rgba(12, 18, 25, 0.3) 37%, rgba(0, 102, 177, 0.4));
+      box-shadow:
+        inset 0 0 40px rgba(255, 255, 255, 0.03),
+        0 25px 42px rgba(0, 0, 0, 0.48);
+      transform: skewX(-5deg);
+    }
+
+    .mini-car::after {
+      position: absolute;
+      top: 14px;
+      left: 31%;
+      width: 38%;
+      height: 48px;
+      border: 1px solid rgba(129, 188, 225, 0.25);
+      border-radius: 48% 48% 8% 8%;
+      content: "";
+      background: linear-gradient(160deg, rgba(77, 128, 159, 0.32), rgba(7, 12, 17, 0.92));
+      transform: skewX(-9deg);
+    }
+
+    .mini-wheel {
+      position: absolute;
+      z-index: 4;
+      top: 70px;
+      width: 38px;
+      height: 38px;
+      border: 4px solid #10151a;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, #8d99a4 0 16%, #26313b 17% 41%, #0b0f13 43% 100%);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
+    }
+
+    .mini-wheel.front {
+      right: 20%;
+    }
+
+    .mini-wheel.rear {
+      left: 21%;
+    }
+
+    .mini-headlight {
+      position: absolute;
+      z-index: 5;
+      top: 58px;
+      right: 13.5%;
+      width: 34px;
+      height: 4px;
+      border-radius: 99px;
+      background: #d9f4ff;
+      box-shadow: 0 0 13px #66c9ff;
+    }
+
+    .model-card[data-power="electric"] .mini-car::before {
+      background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.12), rgba(13, 28, 42, 0.48) 37%, rgba(0, 168, 232, 0.42));
+    }
+
+    .model-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .model-stats div {
+      min-width: 100px;
+    }
+
+    .model-stats strong {
+      display: block;
+      color: #e7edf2;
+      font-size: 0.86rem;
+    }
+
+    .model-stats span {
+      display: block;
+      margin-top: 2px;
+      color: #77838e;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+    }
+
+    .model-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .model-card-footer p {
+      color: #6f7d89;
+      font-size: 0.68rem;
+    }
+
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 0;
+      background: none;
+      color: #d8e9f6;
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+
+    .text-link:hover {
+      color: var(--bmw-sky);
+    }
+
+    /* =========================================================
+       6. EXPERIENCE / DEALER BENEFITS
+       ========================================================= */
+    .experience {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, #0b1117 0%, #0c1520 54%, #07111b 100%);
+    }
+
+    .experience::after {
+      position: absolute;
+      top: -30%;
+      right: -15%;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      content: "";
+      background: rgba(0, 102, 177, 0.12);
+      filter: blur(80px);
+    }
+
+    .benefit-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .benefit-card {
+      min-height: 250px;
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.035);
+      backdrop-filter: blur(14px);
+    }
+
+    .benefit-number {
+      color: var(--bmw-sky);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+    }
+
+    .benefit-card h3 {
+      margin: 52px 0 10px;
+      color: #fff;
+      font-size: 1.25rem;
+    }
+
+    .benefit-card p {
+      color: #8e9aa6;
+      font-size: 0.87rem;
+    }
+
+    /* =========================================================
+       7. QUOTE AREA
+       견적 '요청' 데모입니다. 실제 금융 계산은 하지 않습니다.
+       ========================================================= */
+    .quote-section {
+      background: #f3f5f7;
+      color: #10151a;
+    }
+
+    .quote-section .eyebrow {
+      color: #5a6671;
+    }
+
+    .quote-section .section-title {
+      color: #0a0e12;
+    }
+
+    .quote-section .section-description {
+      color: #69747d;
+    }
+
+    .quote-shell {
+      display: grid;
+      overflow: hidden;
+      grid-template-columns: 0.78fr 1.22fr;
+      border-radius: 30px;
+      background: #fff;
+      box-shadow: 0 25px 75px rgba(18, 28, 38, 0.12);
+    }
+
+    .quote-preview {
+      position: relative;
+      display: flex;
+      min-height: 560px;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      padding: 38px;
+      background:
+        radial-gradient(circle at 70% 34%, rgba(0, 168, 232, 0.24), transparent 32%),
+        linear-gradient(155deg, #071019, #0b1722 48%, #071019);
+      color: #fff;
+    }
+
+    .quote-preview::after {
+      position: absolute;
+      right: -120px;
+      bottom: -210px;
+      width: 460px;
+      height: 460px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 50%;
+      content: "";
+      box-shadow:
+        0 0 0 65px rgba(255, 255, 255, 0.018),
+        0 0 0 130px rgba(255, 255, 255, 0.012);
+    }
+
+    .quote-model-label {
+      color: var(--bmw-sky);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .quote-preview h3 {
+      position: relative;
+      z-index: 2;
+      margin-top: 6px;
+      font-size: clamp(2.5rem, 5vw, 5.3rem);
+      line-height: 0.92;
+      letter-spacing: -0.06em;
+    }
+
+    .quote-preview-bottom {
+      position: relative;
+      z-index: 2;
+    }
+
+    .quote-preview-bottom p {
+      max-width: 320px;
+      color: #8b99a5;
+      font-size: 0.82rem;
+    }
+
+    .quote-accent-line {
+      width: 70px;
+      height: 3px;
+      margin-bottom: 16px;
+      background: linear-gradient(90deg, var(--bmw-sky), var(--bmw-blue));
+    }
+
+    .quote-form {
+      padding: 42px;
+    }
+
+    .quote-form h3 {
+      margin-bottom: 8px;
+      font-size: 1.4rem;
+    }
+
+    .quote-form > p {
+      margin-bottom: 28px;
+      color: #78828c;
+      font-size: 0.84rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .form-group {
+      display: grid;
+      gap: 7px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      color: #46505a;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .field {
+      width: 100%;
+      min-height: 50px;
+      padding: 0 14px;
+      border: 1px solid #d9dee3;
+      border-radius: 10px;
+      outline: none;
+      background: #fff;
+      color: #13181d;
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .field:focus {
+      border-color: var(--bmw-blue);
+      box-shadow: 0 0 0 3px rgba(0, 102, 177, 0.1);
+    }
+
+    .range-wrap {
+      padding: 11px 0 4px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--bmw-blue);
+    }
+
+    .range-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 6px;
+      color: #7c8791;
+      font-size: 0.68rem;
+    }
+
+    .range-meta strong {
+      color: #17202a;
+    }
+
+    .quote-submit {
+      width: 100%;
+      min-height: 52px;
+      margin-top: 24px;
+      border: 0;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--bmw-blue), #137fca);
+      box-shadow: 0 12px 26px rgba(0, 102, 177, 0.22);
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .quote-result {
+      display: none;
+      margin-top: 16px;
+      padding: 14px;
+      border: 1px solid rgba(0, 102, 177, 0.14);
+      border-radius: 12px;
+      background: #eef6fb;
+      color: #25465d;
+      font-size: 0.78rem;
+    }
+
+    .quote-result.show {
+      display: block;
+    }
+
+    /* =========================================================
+       8. FOOTER
+       ========================================================= */
+    .site-footer {
+      padding: 44px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: #05070a;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      color: #68737e;
+      font-size: 0.7rem;
+    }
+
+    .footer-inner strong {
+      color: #a9b3bd;
+    }
+
+    /* =========================================================
+       9. REVEAL ANIMATION
+       ========================================================= */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(26px);
+      transition:
+        opacity 0.65s ease,
+        transform 0.65s ease;
+    }
+
+    [data-reveal].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       10. RESPONSIVE
+       ========================================================= */
+    @media (max-width: 980px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-layout,
+      .section-heading,
+      .quote-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-layout {
+        padding-top: 140px;
+      }
+
+      .hero-visual {
+        min-height: 520px;
+      }
+
+      .hero-car-stage {
+        width: min(710px, 108%);
+      }
+
+      .section-heading {
+        gap: 20px;
+      }
+
+      .model-card:nth-child(n) {
+        grid-column: span 6;
+      }
+
+      .benefit-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .quote-preview {
+        min-height: 390px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .section {
+        padding: 82px 0;
+      }
+
+      .brand-copy span {
+        display: none;
+      }
+
+      .nav-cta {
+        min-height: 38px;
+        padding: 0 13px;
+        font-size: 0.7rem;
+      }
+
+      .hero-layout {
+        display: block;
+        min-height: auto;
+      }
+
+      .hero h1 {
+        font-size: clamp(3.7rem, 22vw, 6.3rem);
+      }
+
+      .hero-visual {
+        min-height: 370px;
+      }
+
+      .hero-side-info {
+        display: none;
+      }
+
+      .hero-dots {
+        right: auto;
+        bottom: 1%;
+        left: 0;
+      }
+
+      .model-card:nth-child(n) {
+        grid-column: 1 / -1;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-group.full {
+        grid-column: auto;
+      }
+
+      .quote-form {
+        padding: 28px 22px;
+      }
+
+      .quote-preview {
+        padding: 28px 24px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- =========================================================
+       HEADER
+       실제 BMW 공식 사이트가 아닌 포트폴리오용 가상 딜러 콘셉트입니다.
+       ========================================================= -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="BMW Prime Seoul 홈">
+        <span class="brand-mark">BMW</span>
+
+        <span class="brand-copy">
+          <strong>PRIME SEOUL</strong>
+          <span>Dealer concept</span>
+        </span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#models">Models</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#quote">Estimate</a></li>
+      </ul>
+
+      <a class="nav-cta" href="#quote">견적 상담</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- =======================================================
+         HERO
+         JS로 모델 데이터가 자동으로 순환합니다.
+         ======================================================= -->
+    <section class="hero" id="home">
+      <div class="hero-spotlight" id="heroSpotlight"></div>
+
+      <div class="container hero-layout">
+        <div class="hero-copy">
+          <div class="hero-kicker">
+            <span class="m-stripes" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+
+            <span>BMW Sedan Collection · 2026</span>
+          </div>
+
+          <p class="hero-model-index" id="heroIndex">01 / 03 · Executive Sedan</p>
+
+          <h1 id="heroTitle">
+            THE
+            <span class="outline">5</span>
+          </h1>
+
+          <p class="hero-tagline" id="heroTagline">
+            비즈니스의 품격과 일상의 다이내믹을 하나의 세단에.
+            BMW 5시리즈를 중심으로 당신에게 맞는 세단을 만나보세요.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#quote">
+              내 견적 알아보기 <span>→</span>
+            </a>
+
+            <a class="button button-secondary" href="#models">
+              세단 라인업 보기
+            </a>
+          </div>
+
+          <div class="hero-specs">
+            <div class="spec-chip">
+              <strong id="heroSpecOne">530i xDrive</strong>
+              <span>Representative trim</span>
+            </div>
+
+            <div class="spec-chip">
+              <strong id="heroSpecTwo">11.1 km/L</strong>
+              <span id="heroSpecTwoLabel">Combined economy</span>
+            </div>
+
+            <div class="spec-chip">
+              <strong>Premium</strong>
+              <span>Dealer consultation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" id="heroVisual">
+          <span class="hero-series-watermark" id="heroWatermark">5</span>
+
+          <div class="hero-car-stage" id="heroCarStage">
+            <div class="car-aura"></div>
+            <div class="car-platform"></div>
+
+            <!--
+              외부 이미지 파일 없이 GitHub에 바로 올릴 수 있도록
+              SVG로 BMW 세단을 연상시키는 오리지널 실루엣을 만들었습니다.
+            -->
+            <svg
+              class="sedan-svg"
+              viewBox="0 0 900 430"
+              role="img"
+              aria-label="고급 세단 콘셉트 일러스트레이션"
+            >
+              <defs>
+                <linearGradient id="carPaint" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#27313c" />
+                  <stop offset="36%" stop-color="#111820" />
+                  <stop offset="70%" stop-color="#0c141c" />
+                  <stop offset="100%" stop-color="#0066b1" stop-opacity="0.72" />
+                </linearGradient>
+
+                <linearGradient id="glass" x1="0" x2="1">
+                  <stop offset="0%" stop-color="#162a3a" />
+                  <stop offset="50%" stop-color="#091017" />
+                  <stop offset="100%" stop-color="#1a3548" />
+                </linearGradient>
+              </defs>
+
+              <!-- 차체 -->
+              <path
+                class="car-body-main"
+                d="M98 287
+                   C124 244 174 224 250 211
+                   L315 151
+                   C344 124 389 110 447 109
+                   L550 110
+                   C608 112 657 136 694 175
+                   L744 225
+                   C796 235 833 252 851 281
+                   L844 318
+                   L773 328
+                   C764 278 729 247 681 247
+                   C632 247 596 279 588 333
+                   L306 333
+                   C299 279 263 247 214 247
+                   C166 247 130 278 122 328
+                   L80 318
+                   C78 307 83 298 98 287Z"
+              />
+
+              <!-- 유리 -->
+              <path
+                class="car-window"
+                d="M329 155
+                   C357 132 390 124 438 123
+                   L529 123
+                   C579 124 620 143 651 175
+                   L684 210
+                   L286 210Z"
+              />
+
+              <!-- B필러와 디테일 -->
+              <path class="car-line" d="M464 124 L454 210" />
+              <path class="car-line" d="M538 124 L572 210" />
+              <path class="car-line" d="M267 226 C413 219 616 218 754 229" />
+              <path class="car-line" d="M324 333 C405 340 517 340 583 333" />
+
+              <!-- 헤드램프 -->
+              <path
+                class="car-light"
+                d="M745 242 L823 255 L807 266 L748 261Z"
+              />
+
+              <!-- 뒤쪽 램프 -->
+              <path
+                fill="#d31f35"
+                opacity="0.75"
+                d="M111 258 L172 243 L176 253 L116 270Z"
+              />
+
+              <!-- 휠 -->
+              <g transform="translate(214 310)">
+                <circle class="wheel-ring" r="72" />
+                <circle class="wheel-inner" r="42" />
+                <circle fill="#090c10" r="10" />
+                <path class="wheel-spoke" d="M0 -38 L0 -12 M27 -27 L8 -8 M38 0 L12 0 M27 27 L8 8 M0 38 L0 12 M-27 27 L-8 8 M-38 0 L-12 0 M-27 -27 L-8 -8" />
+              </g>
+
+              <g transform="translate(681 310)">
+                <circle class="wheel-ring" r="72" />
+                <circle class="wheel-inner" r="42" />
+                <circle fill="#090c10" r="10" />
+                <path class="wheel-spoke" d="M0 -38 L0 -12 M27 -27 L8 -8 M38 0 L12 0 M27 27 L8 8 M0 38 L0 12 M-27 27 L-8 8 M-38 0 L-12 0 M-27 -27 L-8 -8" />
+              </g>
+            </svg>
+          </div>
+
+          <div class="hero-dots" id="heroDots" aria-label="히어로 모델 선택"></div>
+
+          <div class="hero-side-info">
+            Move your cursor · Interactive light
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         MODEL LINEUP
+         ======================================================= -->
+    <section class="section models-section" id="models">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <div>
+            <span class="eyebrow">Selected sedans</span>
+            <h2 class="section-title">SUV는 빼고,<br />세단에 집중했습니다.</h2>
+          </div>
+
+          <p class="section-description">
+            BMW Korea의 현재 세단 라인업을 바탕으로 3시리즈, 5시리즈,
+            7시리즈와 순수전기 i5, i7을 대표 모델로 구성했습니다.
+            이 페이지는 포트폴리오용 비공식 딜러 콘셉트이며 실제 판매 페이지가 아닙니다.
+          </p>
+        </div>
+
+        <div class="model-filters" data-reveal>
+          <button class="filter-button active" data-filter="all">All Sedans</button>
+          <button class="filter-button" data-filter="gasoline">Gasoline</button>
+          <button class="filter-button" data-filter="electric">Electric</button>
+          <button class="filter-button" data-filter="flagship">Flagship</button>
+        </div>
+
+        <div class="model-grid">
+          <!-- BMW 5 SERIES -->
+          <article class="model-card" data-filter-type="gasoline" data-power="gasoline" data-reveal>
+            <div class="model-card-top">
+              <div>
+                <p class="model-category">Executive sedan</p>
+                <h3>BMW 5 Series</h3>
+              </div>
+              <span class="model-badge">G60</span>
+            </div>
+
+            <div class="model-art" aria-hidden="true">
+              <div class="mini-car">
+                <span class="mini-wheel rear"></span>
+                <span class="mini-wheel front"></span>
+                <span class="mini-headlight"></span>
+              </div>
+            </div>
+
+            <div class="model-stats">
+              <div>
+                <strong>530i xDrive</strong>
+                <span>Representative trim</span>
+              </div>
+              <div>
+                <strong>11.1 km/L</strong>
+                <span>Combined economy</span>
+              </div>
+            </div>
+
+            <div class="model-card-footer">
+              <p>BMW Korea 공개 정보 기준 · 실제 사양은 변경될 수 있음</p>
+              <button class="text-link quote-model" data-model="BMW 5 Series">견적 보기 →</button>
+            </div>
+          </article>
+
+          <!-- BMW i5 -->
+          <article class="model-card" data-filter-type="electric" data-power="electric" data-reveal>
+            <div class="model-card-top">
+              <div>
+                <p class="model-category">Electric executive sedan</p>
+                <h3>BMW i5</h3>
+              </div>
+              <span class="model-badge">Electric</span>
+            </div>
+
+            <div class="model-art" aria-hidden="true">
+              <div class="mini-car">
+                <span class="mini-wheel rear"></span>
+                <span class="mini-wheel front"></span>
+                <span class="mini-headlight"></span>
+              </div>
+            </div>
+
+            <div class="model-stats">
+              <div>
+                <strong>340 PS</strong>
+                <span>eDrive40</span>
+              </div>
+              <div>
+                <strong>453 km</strong>
+                <span>Certified range</span>
+              </div>
+            </div>
+
+            <div class="model-card-footer">
+              <p>주행거리는 외부 환경과 주행 조건에 따라 달라질 수 있음</p>
+              <button class="text-link quote-model" data-model="BMW i5">견적 보기 →</button>
+            </div>
+          </article>
+
+          <!-- BMW 3 SERIES -->
+          <article class="model-card" data-filter-type="gasoline" data-power="gasoline" data-reveal>
+            <div class="model-card-top">
+              <div>
+                <p class="model-category">Sports sedan</p>
+                <h3>BMW 3 Series</h3>
+              </div>
+              <span class="model-badge">G20</span>
+            </div>
+
+            <div class="model-art" aria-hidden="true">
+              <div class="mini-car">
+                <span class="mini-wheel rear"></span>
+                <span class="mini-wheel front"></span>
+                <span class="mini-headlight"></span>
+              </div>
+            </div>
+
+            <div class="model-stats">
+              <div>
+                <strong>190 PS</strong>
+                <span>320i</span>
+              </div>
+              <div>
+                <strong>12.2 km/L</strong>
+                <span>Combined economy</span>
+              </div>
+            </div>
+
+            <div class="model-card-footer">
+              <p>스포티한 주행 감각을 강조한 컴팩트 스포츠 세단</p>
+              <button class="text-link quote-model" data-model="BMW 3 Series">견적 보기 →</button>
+            </div>
+          </article>
+
+          <!-- BMW 7 SERIES -->
+          <article class="model-card" data-filter-type="flagship gasoline" data-power="gasoline" data-reveal>
+            <div class="model-card-top">
+              <div>
+                <p class="model-category">Flagship luxury sedan</p>
+                <h3>BMW 7 Series</h3>
+              </div>
+              <span class="model-badge">G70</span>
+            </div>
+
+            <div class="model-art" aria-hidden="true">
+              <div class="mini-car">
+                <span class="mini-wheel rear"></span>
+                <span class="mini-wheel front"></span>
+                <span class="mini-headlight"></span>
+              </div>
+            </div>
+
+            <div class="model-stats">
+              <div>
+                <strong>740i xDrive</strong>
+                <span>Representative trim</span>
+              </div>
+              <div>
+                <strong>10.3 km/L</strong>
+                <span>Combined economy</span>
+              </div>
+            </div>
+
+            <div class="model-card-footer">
+              <p>BMW의 플래그십 세단 라인</p>
+              <button class="text-link quote-model" data-model="BMW 7 Series">견적 보기 →</button>
+            </div>
+          </article>
+
+          <!-- BMW i7 -->
+          <article class="model-card" data-filter-type="flagship electric" data-power="electric" data-reveal>
+            <div class="model-card-top">
+              <div>
+                <p class="model-category">Electric flagship sedan</p>
+                <h3>BMW i7</h3>
+              </div>
+              <span class="model-badge">Electric</span>
+            </div>
+
+            <div class="model-art" aria-hidden="true">
+              <div class="mini-car">
+                <span class="mini-wheel rear"></span>
+                <span class="mini-wheel front"></span>
+                <span class="mini-headlight"></span>
+              </div>
+            </div>
+
+            <div class="model-stats">
+              <div>
+                <strong>544 PS</strong>
+                <span>xDrive60</span>
+              </div>
+              <div>
+                <strong>438 km</strong>
+                <span>Certified range</span>
+              </div>
+            </div>
+
+            <div class="model-card-footer">
+              <p>순수전기 플래그십 세단</p>
+              <button class="text-link quote-model" data-model="BMW i7">견적 보기 →</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         DEALER EXPERIENCE
+         ======================================================= -->
+    <section class="section experience" id="experience">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <div>
+            <span class="eyebrow">Dealer experience</span>
+            <h2 class="section-title">차를 고르는 순간부터<br />프리미엄이어야 하니까.</h2>
+          </div>
+
+          <p class="section-description">
+            단순히 모델을 나열하는 쇼핑몰보다, 실제 딜러가 고객의 사용 목적과
+            구매 방식을 이해하고 한 단계씩 상담해주는 흐름을 의도했습니다.
+          </p>
+        </div>
+
+        <div class="benefit-grid">
+          <article class="benefit-card" data-reveal>
+            <span class="benefit-number">01 · CURATION</span>
+            <h3>라이프스타일 기반 추천</h3>
+            <p>
+              출퇴근, 장거리 주행, 비즈니스 의전, 전기차 충전 환경 등을 기준으로
+              고객에게 맞는 세단을 좁혀갑니다.
+            </p>
+          </article>
+
+          <article class="benefit-card" data-reveal>
+            <span class="benefit-number">02 · FINANCE</span>
+            <h3>구매 방식별 상담</h3>
+            <p>
+              현금, 할부, 리스 등 구매 방식에 따라 상담 정보를 정리할 수 있도록
+              견적 요청 폼을 구성했습니다.
+            </p>
+          </article>
+
+          <article class="benefit-card" data-reveal>
+            <span class="benefit-number">03 · TEST DRIVE</span>
+            <h3>상담에서 시승까지</h3>
+            <p>
+              온라인에서 관심 모델을 고른 뒤 딜러 상담과 시승으로 이어지는
+              실제 자동차 구매 여정을 간결하게 표현했습니다.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         QUOTE / ESTIMATE
+         ======================================================= -->
+    <section class="section quote-section" id="quote">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <div>
+            <span class="eyebrow">Request an estimate</span>
+            <h2 class="section-title">당신의 BMW,<br />견적부터 시작하세요.</h2>
+          </div>
+
+          <p class="section-description">
+            이 폼은 GitHub 포트폴리오용 프론트엔드 데모입니다.
+            실제 계약이나 금융 신청이 이루어지지 않으며, 제출 시 선택 내용을 화면에 요약합니다.
+          </p>
+        </div>
+
+        <div class="quote-shell" data-reveal>
+          <aside class="quote-preview">
+            <div>
+              <span class="quote-model-label">Selected model</span>
+              <h3 id="quotePreviewModel">BMW<br />5 SERIES</h3>
+            </div>
+
+            <div class="quote-preview-bottom">
+              <div class="quote-accent-line"></div>
+              <p>
+                원하는 모델과 구매 방식을 선택하면 상담 요청 정보를 아래에서 확인할 수 있습니다.
+              </p>
+            </div>
+          </aside>
+
+          <form class="quote-form" id="quoteForm">
+            <h3>빠른 견적 상담</h3>
+            <p>실제 개인정보를 입력하지 않아도 데모 동작을 확인할 수 있습니다.</p>
+
+            <div class="form-grid">
+              <div class="form-group full">
+                <label for="modelSelect">MODEL</label>
+                <select class="field" id="modelSelect" required>
+                  <option value="BMW 3 Series">BMW 3 Series</option>
+                  <option value="BMW 5 Series" selected>BMW 5 Series</option>
+                  <option value="BMW i5">BMW i5</option>
+                  <option value="BMW 7 Series">BMW 7 Series</option>
+                  <option value="BMW i7">BMW i7</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="purchaseType">PURCHASE TYPE</label>
+                <select class="field" id="purchaseType" required>
+                  <option>할부 상담</option>
+                  <option>리스 상담</option>
+                  <option>현금 구매</option>
+                  <option>구매 방식 추천받기</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="testDrive">TEST DRIVE</label>
+                <select class="field" id="testDrive">
+                  <option>시승도 함께 신청</option>
+                  <option>견적만 먼저 확인</option>
+                </select>
+              </div>
+
+              <div class="form-group full">
+                <label for="budgetRange">MONTHLY BUDGET</label>
+
+                <div class="range-wrap">
+                  <input
+                    id="budgetRange"
+                    type="range"
+                    min="50"
+                    max="500"
+                    value="150"
+                    step="10"
+                  />
+
+                  <div class="range-meta">
+                    <span>월 50만 원</span>
+                    <strong id="budgetValue">월 150만 원 수준</strong>
+                    <span>월 500만 원+</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="customerName">NAME · DEMO</label>
+                <input
+                  class="field"
+                  id="customerName"
+                  type="text"
+                  placeholder="예: 홍길동"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="customerContact">CONTACT · DEMO</label>
+                <input
+                  class="field"
+                  id="customerContact"
+                  type="text"
+                  placeholder="실제 연락처 입력 불필요"
+                />
+              </div>
+            </div>
+
+            <button class="quote-submit" type="submit">
+              선택한 조건으로 견적 요청하기
+            </button>
+
+            <div class="quote-result" id="quoteResult" role="status"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>
+        <strong>BMW PRIME SEOUL</strong> — Unofficial portfolio dealer concept.
+      </p>
+
+      <p>
+        BMW 및 각 모델명은 해당 권리자의 상표입니다. 본 페이지는 학습·포트폴리오용 비공식 데모입니다.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    /* =========================================================
+       1. HERO MODEL DATA
+       공개된 BMW Korea 모델 정보 중 대표값만 사용했습니다.
+       실제 차량 가격/프로모션/사양은 변경될 수 있습니다.
+       ========================================================= */
+    const heroModels = [
+      {
+        index: "01 / 03 · Executive Sedan",
+        title: "THE",
+        series: "5",
+        tagline:
+          "비즈니스의 품격과 일상의 다이내믹을 하나의 세단에. BMW 5시리즈를 중심으로 당신에게 맞는 세단을 만나보세요.",
+        specOne: "530i xDrive",
+        specTwo: "11.1 km/L",
+        specTwoLabel: "Combined economy",
+      },
+      {
+        index: "02 / 03 · Sports Sedan",
+        title: "THE",
+        series: "3",
+        tagline:
+          "운전의 즐거움이라는 BMW의 핵심을 가장 선명하게 보여주는 스포츠 세단. 일상에서도 경쾌한 균형을 경험하세요.",
+        specOne: "320i",
+        specTwo: "190 PS",
+        specTwoLabel: "Max output",
+      },
+      {
+        index: "03 / 03 · Electric Sedan",
+        title: "THE",
+        series: "i5",
+        tagline:
+          "5시리즈의 비즈니스 감각에 순수전기 구동을 더한 i5. 정숙함과 즉각적인 반응을 새로운 프리미엄으로 제안합니다.",
+        specOne: "i5 eDrive40",
+        specTwo: "453 km",
+        specTwoLabel: "Certified range",
+      },
+    ];
+
+    /* =========================================================
+       2. DOM ELEMENTS
+       자주 사용할 HTML 요소를 JavaScript 변수에 저장합니다.
+       ========================================================= */
+    const siteHeader = document.getElementById("siteHeader");
+    const hero = document.querySelector(".hero");
+    const heroSpotlight = document.getElementById("heroSpotlight");
+    const heroCarStage = document.getElementById("heroCarStage");
+
+    const heroIndex = document.getElementById("heroIndex");
+    const heroTitle = document.getElementById("heroTitle");
+    const heroTagline = document.getElementById("heroTagline");
+    const heroSpecOne = document.getElementById("heroSpecOne");
+    const heroSpecTwo = document.getElementById("heroSpecTwo");
+    const heroSpecTwoLabel = document.getElementById("heroSpecTwoLabel");
+    const heroWatermark = document.getElementById("heroWatermark");
+    const heroDots = document.getElementById("heroDots");
+
+    let activeHeroIndex = 0;
+    let heroTimer;
+
+    /* =========================================================
+       3. HERO DOTS
+       모델 수만큼 하단 인디케이터 버튼을 자동 생성합니다.
+       ========================================================= */
+    heroModels.forEach((model, index) => {
+      const dot = document.createElement("button");
+
+      dot.className = "hero-dot";
+      dot.type = "button";
+      dot.setAttribute("aria-label", `${model.series} 모델 보기`);
+
+      dot.addEventListener("click", () => {
+        setHero(index);
+        resetHeroTimer();
+      });
+
+      heroDots.appendChild(dot);
+    });
+
+    /* =========================================================
+       4. HERO CONTENT SWITCH
+       모델 변경 시 텍스트를 교체하고 살짝 페이드 효과를 줍니다.
+       ========================================================= */
+    function setHero(index) {
+      activeHeroIndex = index;
+
+      const model = heroModels[index];
+
+      const textTargets = [
+        heroIndex,
+        heroTitle,
+        heroTagline,
+        heroSpecOne,
+        heroSpecTwo,
+        heroSpecTwoLabel,
+        heroWatermark,
+      ];
+
+      textTargets.forEach((element) => {
+        element.style.opacity = "0";
+        element.style.transform = "translateY(8px)";
+      });
+
+      window.setTimeout(() => {
+        heroIndex.textContent = model.index;
+
+        heroTitle.innerHTML = `${model.title}<span class="outline">${model.series}</span>`;
+
+        heroTagline.textContent = model.tagline;
+        heroSpecOne.textContent = model.specOne;
+        heroSpecTwo.textContent = model.specTwo;
+        heroSpecTwoLabel.textContent = model.specTwoLabel;
+        heroWatermark.textContent = model.series;
+
+        document.querySelectorAll(".hero-dot").forEach((dot, dotIndex) => {
+          dot.classList.toggle("active", dotIndex === index);
+        });
+
+        textTargets.forEach((element) => {
+          element.style.transition =
+            "opacity .35s ease, transform .35s ease";
+          element.style.opacity = "1";
+          element.style.transform = "translateY(0)";
+        });
+      }, 170);
+    }
+
+    function nextHero() {
+      const nextIndex = (activeHeroIndex + 1) % heroModels.length;
+      setHero(nextIndex);
+    }
+
+    function resetHeroTimer() {
+      window.clearInterval(heroTimer);
+      heroTimer = window.setInterval(nextHero, 5200);
+    }
+
+    setHero(0);
+    resetHeroTimer();
+
+    /* =========================================================
+       5. HERO MOUSE EFFECT
+       마우스 위치에 따라 빛과 차량 SVG가 약간 움직입니다.
+       ========================================================= */
+    hero.addEventListener("pointermove", (event) => {
+      const rect = hero.getBoundingClientRect();
+
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+
+      heroSpotlight.style.left = `${x}px`;
+      heroSpotlight.style.top = `${y}px`;
+
+      const normalizedX = x / rect.width - 0.5;
+      const normalizedY = y / rect.height - 0.5;
+
+      heroCarStage.style.transform =
+        `translate(-48%, -47%) rotateY(${normalizedX * 6}deg) rotateX(${normalizedY * -3}deg) translate3d(${normalizedX * 10}px, ${normalizedY * 8}px, 0)`;
+    });
+
+    hero.addEventListener("pointerleave", () => {
+      heroCarStage.style.transform =
+        "translate(-48%, -47%) rotateY(0deg) rotateX(0deg)";
+    });
+
+    /* =========================================================
+       6. STICKY HEADER
+       스크롤을 내리면 헤더에 블러 배경을 추가합니다.
+       ========================================================= */
+    function updateHeader() {
+      siteHeader.classList.toggle("scrolled", window.scrollY > 24);
+    }
+
+    window.addEventListener("scroll", updateHeader);
+    updateHeader();
+
+    /* =========================================================
+       7. MODEL FILTER
+       가솔린 / 전기 / 플래그십 필터 기능입니다.
+       ========================================================= */
+    const filterButtons = document.querySelectorAll(".filter-button");
+    const modelCards = document.querySelectorAll(".model-card");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const selectedFilter = button.dataset.filter;
+
+        filterButtons.forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+
+        modelCards.forEach((card) => {
+          const cardFilters = card.dataset.filterType.split(" ");
+
+          const shouldShow =
+            selectedFilter === "all" || cardFilters.includes(selectedFilter);
+
+          card.classList.toggle("hidden", !shouldShow);
+        });
+      });
+    });
+
+    /* =========================================================
+       8. QUOTE MODEL SHORTCUT
+       모델 카드의 '견적 보기'를 누르면 견적 폼으로 이동하고
+       해당 모델을 자동 선택합니다.
+       ========================================================= */
+    const quoteButtons = document.querySelectorAll(".quote-model");
+    const modelSelect = document.getElementById("modelSelect");
+    const quotePreviewModel = document.getElementById("quotePreviewModel");
+
+    function updateQuotePreview(modelName) {
+      const parts = modelName.replace("BMW ", "").split(" ");
+
+      if (parts.length === 1) {
+        quotePreviewModel.innerHTML = `BMW<br>${parts[0].toUpperCase()}`;
+      } else {
+        quotePreviewModel.innerHTML =
+          `BMW<br>${parts.join(" ").toUpperCase()}`;
+      }
+    }
+
+    quoteButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        modelSelect.value = button.dataset.model;
+        updateQuotePreview(button.dataset.model);
+
+        document.getElementById("quote").scrollIntoView({
+          behavior: "smooth",
+        });
+      });
+    });
+
+    modelSelect.addEventListener("change", () => {
+      updateQuotePreview(modelSelect.value);
+    });
+
+    /* =========================================================
+       9. BUDGET RANGE
+       슬라이더의 현재 값을 화면에 표시합니다.
+       ========================================================= */
+    const budgetRange = document.getElementById("budgetRange");
+    const budgetValue = document.getElementById("budgetValue");
+
+    function updateBudget() {
+      budgetValue.textContent = `월 ${budgetRange.value}만 원 수준`;
+    }
+
+    budgetRange.addEventListener("input", updateBudget);
+    updateBudget();
+
+    /* =========================================================
+       10. QUOTE FORM DEMO
+       서버가 없는 정적 GitHub 페이지이므로 실제 전송 대신
+       사용자가 선택한 값을 화면에 요약합니다.
+       ========================================================= */
+    const quoteForm = document.getElementById("quoteForm");
+    const quoteResult = document.getElementById("quoteResult");
+    const purchaseType = document.getElementById("purchaseType");
+    const testDrive = document.getElementById("testDrive");
+
+    quoteForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      quoteResult.innerHTML = `
+        <strong>${modelSelect.value}</strong> ·
+        ${purchaseType.value} ·
+        월 예산 ${budgetRange.value}만 원 ·
+        ${testDrive.value}<br>
+        포트폴리오 데모이므로 실제 상담 요청은 전송되지 않았습니다.
+      `;
+
+      quoteResult.classList.add("show");
+    });
+
+    /* =========================================================
+       11. SCROLL REVEAL
+       화면 안으로 들어오는 요소를 부드럽게 등장시킵니다.
+       ========================================================= */
+    const revealElements = document.querySelectorAll("[data-reveal]");
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+      }
+    );
+
+    revealElements.forEach((element) => {
+      revealObserver.observe(element);
+    });
+  </script>
+</body>
+</html>
